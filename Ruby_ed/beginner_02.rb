@@ -1,3 +1,5 @@
+require 'benchmark'
+
 def fib(n)
   if (n == 0)
     return 0 
@@ -8,7 +10,11 @@ def fib(n)
 end
 
 length = 40
-length.times do |i|
-  p fib(i)
+
+result = Benchmark.realtime do
+  length.times do |i|
+    p fib(i)
+end
 end
 
+p "処理概要 #{result}s"
